@@ -17,11 +17,25 @@
 
     <header class="p-5 text-center text-white bg-primary">
       <h1>Don't Rain Me Out</h1>
-      <p> Search all Venues for Event Details and Forcast!</p>
+      <p> Search all Venues for Event Details and Forecast!</p>
     </header>
+    <button id="click-button"> Click here</button>
     <!-- Add Search Button -->
   
+    <script type='text/javascript'
+    src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=At4pyP_VIdBay1sVdvmdDakiHMRlD3Iei3gdJVapdNdZ6ONpkEbughZCHSVjc83L' 
+    async defer></script>
+
+<script type='text/javascript'>
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap');
+
+//Add your post map load code here.
+}
+</script>
 
     <script src="./script.js"></script>
   </body>
+  <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
 </html>
