@@ -3,6 +3,15 @@ var APIeventKey = "9m1sGkEcZegpwhG1afNONOAPhT8SAZVM"
 
 var fetchButton = document.querySelector("#click-button")
 
+var beginSearch = document.getElementById("hiddenSearch")
+const headerText = document.getElementById("header")
+const headerPText = document.getElementById("pheader")
+
+beginSearch.addEventListener("click", function(){
+  fetchButton.style.display = "block"
+  headerText.style.display ="hidden"
+  headerPText.style.display ="hidden"
+})
 // API to Ticketmaster - Get Event Details? 
 
 
@@ -17,6 +26,10 @@ function getApi() {
       }
     });
 
+} 
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap');
 }
 
 fetchButton.addEventListener('click', getApi);
