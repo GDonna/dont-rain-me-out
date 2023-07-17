@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Information</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <header>
+    <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-semibold text-xl tracking-tight">Don't Rain On Me</span>
+        </div>
+        <div class="block lg:hidden">
+          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow">
+            <a href="./index.html" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Return Home </a>
+          </div>
+        </div>
+      </nav>
+  </header>
+  <body>
+    <!-- div for venue images & map-->
+    <div class="flex sm:inline-flex md:block lg:block xl:block bg-gray-200">
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="venueimages">
+            <!-- component -->
+            <!-- This is an example component -->
+            <div class="max-w-2xl mx-auto">
+
+                <div id="default-carousel" class="relative" data-carousel="static">
+                    <!-- Carousel wrapper -->
+                    <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+                        <!-- Item 1 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
+                            <img id="veneuImage1" src="https://flowbite.com/docs/images/carousel/carousel-1.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img id="venueImage2"src="https://flowbite.com/docs/images/carousel/carousel-2.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img id="venueImage2" src="https://flowbite.com/docs/images/carousel/carousel-3.svg" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                        </div>
+                    </div>
+                    <!-- Slider indicators -->
+                    <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                    </div>
+                    <!-- Slider controls -->
+                    <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            <span class="hidden">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+                        <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            <span class="hidden">Next</span>
+                        </span>
+                    </button>
+                </div>
+                <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+            </div>
+                    </div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="map">
+          <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=At4pyP_VIdBay1sVdvmdDakiHMRlD3Iei3gdJVapdNdZ6ONpkEbughZCHSVjc83L' 
+            async defer></script>
+
+          <script type='text/javascript'>
+              function GetMap() {var map = new Microsoft.Maps.Map('#myMap'); //Add your post map load code here.
+            } </script>
+        </div>
+    </div>
+     <!-- this will hold the upcoming events--> 
+      <div class="flex sm:flex-col md:flex-col lg:flex-row xl:flex-row bg-gray-200">
+        <!-- Event 1 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event1">1</div>
+        <!-- Event 2 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event2">2</div>
+        <!-- Event 3 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event3">3</div>
+        <!-- Event 4 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event4">3</div>
+        <!-- Event 5 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event5">3</div>
+        <!-- Event 6 info -->
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event6">3</div>
+      </div>
+  </body>
