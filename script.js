@@ -3,15 +3,11 @@ var APIeventKey = "9m1sGkEcZegpwhG1afNONOAPhT8SAZVM"
 
 var fetchButton = document.querySelector("#click-button")
 
-var beginSearch = document.getElementById("hiddenSearch")
-const headerText = document.getElementById("header")
-const headerPText = document.getElementById("pheader")
+var beginSearch = document.getElementById("click-button")
 
 beginSearch.addEventListener("click", function(){
-  fetchButton.style.display = "block"
-  headerText.style.display ="hidden"
-  headerPText.style.display ="hidden"
-})
+    location.href=""
+});
 // API to Ticketmaster - Get Event Details? 
 
 
