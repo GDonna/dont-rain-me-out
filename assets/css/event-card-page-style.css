@@ -1,0 +1,14 @@
+*{
+    background-color: #FFA69E;
+}
+
+header{
+    background-color: #AA4465;
+}
+
+#dropdownMenuButton{
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    color: #93E1D8;
+}
