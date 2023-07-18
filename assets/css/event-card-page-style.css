@@ -1,14 +1,33 @@
 *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    min-height: 100vh;
     background-color: #FFA69E;
+
+}
+
+h1{
+    color: #93E1D8;
+}
+
+i{
+    color: #93E1D8;
 }
 
 header{
-    background-color: #AA4465;
-}
-
-#dropdownMenuButton{
-    border-radius: 25px;
-    width: 100px;
-    height: 100px;
-    color: #93E1D8;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    background: #AA4465;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
