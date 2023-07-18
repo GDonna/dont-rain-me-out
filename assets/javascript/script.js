@@ -6,10 +6,8 @@ var fetchButton = document.querySelector("#click-button")
 var beginSearch = document.getElementById("click-button")
 
 beginSearch.addEventListener("click", function(){
-    location.href=""
+   document.location.replace('./eventpage.html')
 });
-// API to Ticketmaster - Get Event Details? 
-
 
 function getApi() {
  
