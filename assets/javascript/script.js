@@ -3,6 +3,11 @@ var APIeventKey = "9m1sGkEcZegpwhG1afNONOAPhT8SAZVM"
 
 var fetchButton = document.querySelector("#click-button")
 
+var beginSearch = document.getElementById("click-button")
+
+beginSearch.addEventListener("click", function(){
+    location.href=""
+});
 // API to Ticketmaster - Get Event Details? 
 
 
@@ -17,6 +22,10 @@ function getApi() {
       }
     });
 
+} 
+function GetMap()
+{
+var map = new Microsoft.Maps.Map('#myMap');
 }
 
 fetchButton.addEventListener('click', getApi);
