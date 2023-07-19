@@ -23,6 +23,13 @@ p{
     margin-bottom:  25px;;
     
 }
+#card{
+    display: inline-flex;
+}
+
+.form-input{
+    margin-right: 20px;
+}
 
 #click-button{
     background:-moz-linear-gradient(transparent);
@@ -32,8 +39,6 @@ p{
     border-style: double;
     border-width: thick;
     border-radius: 20px;
-    margin-right: 5%;
-    margin-left: 40px;
     
 }
 body{

@@ -1,29 +1,16 @@
-var APImapKey = "Ajsz-0Rnl_91Q4o_7Zk-1vDOqfxgvrUPg5-qABhbSNWKgUbRWqI19-Ll37r6mExo"
-var APIeventKey = "9m1sGkEcZegpwhG1afNONOAPhT8SAZVM"
+var searchEventEl= document.querySelector('.card')
 
-var fetchButton = document.querySelector("#click-button")
+function searchCityStateSubmit (event) {
+  event.preventDefault();
+  
+  var cityFormEl = document.querySelector('.city-input').value;
+  var stateFormEl = document.querySelector('.state-input').value;
+  if (!cityFormEl || !stateFormEl) {
+    console.error ("Please enter a city and state");
+    return;
+  }
+   var searchEvent = "./eventpage.html?q=" +cityFormEl+ "&format=" +stateFormEl;
+  location.assign (searchEvent)
+};
 
-var beginSearch = document.getElementById("click-button")
-
-beginSearch.addEventListener("click", function(){
-   document.location.replace('./eventpage.html')
-});
-
-function getApi() {
- 
-      var requestUrl = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM";
-
-    fetch(requestUrl)
-    .then(function (response) {
-      if (response.ok) {
-        console.log(response);
-      }
-    });
-
-} 
-function GetMap()
-{
-var map = new Microsoft.Maps.Map('#myMap');
-}
-
-fetchButton.addEventListener('click', getApi);
+    searchEventEl.addEventListener("submit", searchCityStateSubmit)
