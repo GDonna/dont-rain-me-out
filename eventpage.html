@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Information</title>
+    <title id="titleEL"></title>
     
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -17,6 +17,7 @@
     <nav class="flex items-center justify-between flex-wrap p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <span class="font-semibold text-xl tracking-tight">Don't Rain On Me</span>
+          <span id="main-header"></span>
         </div>
         <div class="block lg:hidden">
           <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -90,19 +91,19 @@
         </div>
     </div>
      <!-- this will hold the upcoming events--> 
-      <div class="flex sm:flex-col md:flex-col lg:flex-row xl:flex-row bg-gray-200">
+      <div class="flex sm:flex-col md:flex-col lg:flex-row xl:flex-row bg-gray-200 event-containerEl">
         <!-- Event 1 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event1">1</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event1"></span></div>
         <!-- Event 2 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event2">2</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event2"></span></div>
         <!-- Event 3 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event3">3</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event3"></span></div>
         <!-- Event 4 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event4">3</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event4"></span></div>
         <!-- Event 5 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event5">3</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event5"></span></div>
         <!-- Event 6 info -->
-        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2" id="event6">3</div>
+        <div class="text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><span id="event6"></span></div>
       </div>
       <link rel="stylesheet" type="text/css" href="/assets/css/event-page-css.css" />
   </body>
