@@ -11,23 +11,67 @@ body{
 
 }
 
-h1{
+nav{
+    width: 100%;
+    height: 65px;
+    background-color: #AA4465;
+}
+
+nav p{
     color: #93E1D8;
+    font-size: 24px;
+    line-height: 55px;
+    float: left;
+    padding: 0px 35px;
 }
 
 i{
     color: #93E1D8;
 }
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 50px;
-    background: #AA4465;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
+nav ul {
+    float: right;
+
+}
+
+nav ul li{
+    float: right;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a{
+    display: block;
+    color: #93E1D8;
+    font-size: 14px;
+    padding: 22px 70px;
+    text-decoration: none;
+}
+
+nav ul li ul{
+    display: none;
+    position: absolute;
+    align-items: end;
+    background-color: #AA4465;
+    padding: 10px;
+    border-radius: 0px 0px 0px 7px;
+}
+
+nav ul li:hover ul{
+    display: block;
+}
+
+nav ul li ul li{
+    text-align: end;
+    width: 120px;
+    border-radius: 4px;
+}
+
+
+nav ul li ul li a{
+    padding: 8px 14px;
+}
+
+nav ul li ul li a:hover{
+    background-color: #462255;
 }
