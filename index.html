@@ -18,22 +18,40 @@
       </header> 
       
       <div class="card">
-        <form id="cityForm" class="citySubmit">
-          <label class="city-form-input">Enter Your City Here: </label>
-          <input id="cityInput" type="text" class="city-input" />
+          <form id="cityForm" class="citySubmit">
+          <label class="city-form-input">Select a City </label>
+          <select name="Cities" id="cityDropDown" class="citylist">
+            <option value="" disabled selected>Select City </option>
+            <option value="Chicago"> Chicago </option>
+            <option value="Boston"> Boston </option>
+            <option value="New York"> New York City </option>
+            <option value="Charleston"> Charleston </option>
+            <option value="Charlotte"> Charlotte </option>
+            <option value="Dallas"> Dallas </option>
+            <option value="New Orleans"> New Orleans </option>
+            <option value="Los Angeles"> Los Angeles </option>
+            <option value="Portland"> Portland </option>
+            <option value="Las Vegas"> Las Vegas</option> </select>
 
           <form id="stateForm" class="stateSubmit">
-            <label class="state-form-input">Enter Your State Here: </label>
-            <input id="stateInput" type="text" class="state-input" />
+            <label class="state-form-input"> Select State </label>
+            <select name="States" id="stateDropDown" class="statelist">
+            <option value="" disabled selected>Select State </option>
+            <option value="Illinois"> IL </option>
+            <option value="Massachusetts"> MA </option>
+            <option value="New York"> NY </option>
+            <option value="South Carolina"> SC </option>
+            <option value="North Carolina"> NC </option>
+            <option value="Texas"> TX </option>
+            <option value="Louisiana"> LA </option>
+            <option value="California"> CA </option>
+            <option value="Oregon"> OR </option>
+            <option value="Nevada"> NV </option> </select>
+          
 
           <button type="submit" id="click-button">Get Event Details</button>
-        </form>
+        </form> </form>
       </div>
-    </div>
-    
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle">Showing Events for: <span id="event-search-term"></span></h2>
-      <div id="repos-container" class="list-group"></div>
     </div>
     
     <script

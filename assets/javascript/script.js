@@ -3,8 +3,8 @@ var searchEventEl= document.querySelector('.card')
 function searchCityStateSubmit (event) {
   event.preventDefault();
   
-  var cityFormEl = document.querySelector('.city-input').value;
-  var stateFormEl = document.querySelector('.state-input').value;
+  var cityFormEl = document.querySelector('#cityDropDown').value;
+  var stateFormEl = document.querySelector('#stateDropDown').value;
   if (!cityFormEl || !stateFormEl) {
     console.error ("Please enter a city and state");
     return;
