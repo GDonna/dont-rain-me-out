@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document Location</title>
+    <title>Don't Rain On Me</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -23,7 +23,7 @@
 
   <body class="min-100-vh">
     <nav>
-      <p>Event Page Placeholder</p>
+      <p class="text-current"></p>
     
 
       <ul>
@@ -34,8 +34,27 @@
           </ul>
         </li>
       </ul>
-
     </nav>
+
+    <div class="flex flex-wrap justify-between">
+      <article id="ticketmaster-box" class="pl-5 pt-5 flex justify-between">
+        <span id="ticketInfo" class="border-solid border-black border-4 px-96 py-3 rounded-lg">
+          
+        </span>
+      </article>
+
+      <article id="weather-box" class="pr-5 pt-5 flex justify-between">
+        <span id="weather" class="border-black border-4 px-96 py-3 rounded-lg">
+          <div id="weatherLocation" class="flex justify-center pb-10 text-5xl text-center pl-5"><i class="fa-solid fa-location-dot pr-5"></i ><p>France</p> </div>
+          <div id="weather-img" class="flex justify-center pb-10 px-36"><i class="fa-solid fa-cloud-rain text-9xl"></i></div>
+          <div class="text-center font-bold text-6xl flex justify-center px-36" id="temperature">°F</div>
+        </span>
+      </article>
+    </div>
+
+    <div >
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script src="./assets/javascript/event-card-page-script.js"></script>
