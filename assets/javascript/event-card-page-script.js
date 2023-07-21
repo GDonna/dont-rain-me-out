@@ -1,3 +1,4 @@
+
 var ticketInfo = $("#ticketInfo");
 var weatherLocation = $("#weatherLocation");
 var weatherImg = $("#weather-img");
