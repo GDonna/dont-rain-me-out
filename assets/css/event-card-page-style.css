@@ -8,7 +8,6 @@
 body{
     min-height: 100vh;
     background-color: #FFA69E;
-
 }
 
 nav{
@@ -23,10 +22,6 @@ nav p{
     line-height: 55px;
     float: left;
     padding: 0px 35px;
-}
-
-i{
-    color: #93E1D8;
 }
 
 nav ul {

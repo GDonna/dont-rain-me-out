@@ -11,7 +11,7 @@ function getEventInfo() {
     var city = searchInput[0].split("=").pop();
     var state = searchInput[1].split("=").pop();
     
-    var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=10&unit=miles&locale=*&sort=date,asc&city="+cityCode+"&countryCode=US&stateCode="+ stateCode;
+    var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=10&unit=miles&locale=*&sort=date,asc&city="+ city +"&countryCode=US&stateCode="+ state;
   
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -28,8 +28,8 @@ function getEventInfo() {
   };
 
 function getUpcomingEvents(data){
-    var venueID = data+".id*";
-    var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&id="+venueID+"apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM";
+    var venueID = data + ".id*";
+    var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=1&id="+ venueID +"apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM";
 
     fetch(apiUrl)
     .then(function(response){
