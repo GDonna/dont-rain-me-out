@@ -11,7 +11,10 @@ function getEventInfo() {
     var state = searchInput[1].split("=").pop();
 
     
+
+
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=10&unit=miles&locale=*&sort=date,asc&city="+city+"&countryCode=US&stateCode="+ state;
+
   
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -30,7 +33,6 @@ function getEventInfo() {
         alert('Unable to connect Ticketmaster API');
     });
   };
-
 
 function displayUpcomingEvents(data){
       
