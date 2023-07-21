@@ -37,17 +37,26 @@
             <label class="state-form-input"> Select State </label>
             <select name="States" id="stateDropDown" class="statelist">
             <option value="" disabled selected>Select State </option>
-            <option value="Illinois"> IL </option>
-            <option value="Massachusetts"> MA </option>
-            <option value="New York"> NY </option>
-            <option value="South Carolina"> SC </option>
-            <option value="North Carolina"> NC </option>
-            <option value="Texas"> TX </option>
-            <option value="Louisiana"> LA </option>
-            <option value="California"> CA </option>
-            <option value="Oregon"> OR </option>
-            <option value="Nevada"> NV </option> </select>
+            <option value="IL"> IL </option>
+            <option value="MA"> MA </option>
+            <option value="NY"> NY </option>
+            <option value="SC"> SC </option>
+            <option value="NC"> NC </option>
+            <option value="TX"> TX </option>
+            <option value="LA"> LA </option>
+            <option value="CA"> CA </option>
+            <option value="OR"> OR </option>
+            <option value="NV"> NV </option> </select>
           
+            <div id="myModal" class="modal">
+
+              <!-- Modal content -->
+              <div class="hidden">
+                <span class="close">&times;</span>
+                <p>Error: Please Try Again</p>
+              </div>
+            
+            </div>
 
           <button type="submit" id="click-button">Get Event Details</button>
         </form> </form>
