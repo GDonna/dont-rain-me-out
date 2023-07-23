@@ -1,7 +1,15 @@
-body, nav{
+body{
     background-color: #FFA69E;
 }
 
-header{
+nav{
     background-color: #AA4465;
+}
+
+h3{
+    display:flex;
+    justify-content: center;
+}
+.eventCard{
+    background-color: #462255;
 }
