@@ -12,6 +12,7 @@ This is a webpage in collaboration with Stephen Hogue, Marko Andreev, and Donna 
 Roles were broken down as follows:
 
 ```
+
 Donna Goon: Homepage creation, Stylizing, README, Modal Creation(in lieu of alerts/prompts)
 Stephen Hogue: Event Card- Main Page creation, Bing Map API, Ticketmaster API Pulls, Stylizing 
 Marko Andreev: Event Card- Page (Weather), Tommorrow API Pulls, Stylizing
