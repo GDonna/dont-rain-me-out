@@ -16,12 +16,9 @@ function convertCityLatLong(){
         fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
-            console.log(response);
             response.json().then(function (data) {
                 lon = data[0].lon;
                 lat = data[0].lat;
-                console.log(lat);
-                console.log(lon);
                 getEventInfo(lon, lat);
 
             });
@@ -39,14 +36,11 @@ function convertCityLatLong(){
 function getEventInfo(lat, lon) {
 
     // gets the user search location from first page and splits it by the "&"
-    
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=2&unit=miles&locale=*&sort=date,name,asc&city="+city+"&countryCode=US&stateCode="+state+"&segmentName=music";
 
-  
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-            console.log(data)
             for(var i = 0; i < data._embedded.events.length; i++){
               displayUpcomingEvents(data._embedded.events[i])
             };
@@ -124,10 +118,8 @@ function getMoreEventInfo(){
   
   // gets buttonID which is the event ID and the Lat and long
   var buttonInfo = this.id.split("-(");
-  console.log(buttonInfo)
   var eventID = buttonInfo[0].split("-").pop();
   var location = buttonInfo[1].split(")")[0];
-  console.log(location);
 
   var searchEvent = "./event-card-page.html?location="+ location + "eventID" +eventID + "cityname=" + city
   // updates the URL and assigns it to the url to render user to event detail page
@@ -153,9 +145,7 @@ function topImg(data){
 }
 
 function getMap(data, lat, lon){
-  
-  console.log(lat)
-  console.log(lon)
+
   map = new Microsoft.Maps.Map('#venueMaps', {
     credentials: "At4pyP_VIdBay1sVdvmdDakiHMRlD3Iei3gdJVapdNdZ6ONpkEbughZCHSVjc83L",
     center: new Microsoft.Maps.Location(lon,lat),
@@ -175,7 +165,6 @@ function getMap(data, lat, lon){
 
     var eventLocationData = data._embedded.events[i]._embedded.venues
     var eventVenue = eventLocationData[0].name
-    console.log(eventVenue)
     
     var eventLat = eventLocationData[0].location.latitude
     var eventLon = eventLocationData[0].location.longitude
