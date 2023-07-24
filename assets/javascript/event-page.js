@@ -4,15 +4,23 @@ var eventContainerEl = document.getElementById("event-containerEl");
 var eventBtn = document.querySelector("event-Btn");
 var venueSearch = "";
 
+// gets the user search location from first page and splits it by the "&"
 var searchInput = document.location.search.split("&");
 var city = searchInput[0].split("=").pop();
 var state = searchInput[1].split("=").pop();
+
+// variables for the Bing MAP api and Map event handler
 var map
 var infobox
+
+// updates Title page text depending on the city and state
+eventPageTitle.innerHTML = "Showing Events for " + city + "," + state
+
 convertCityLatLong();
 
+// gets the City Lat and Long to render Bing MAP API
 function convertCityLatLong(){
-  var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q='+ city+","+state+ ",USA" +'&limit=1&appid=349ff99c6078919fabcd80ffc046fad1';
+  var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q='+ city+","+state+ ",USA" +'&limit=1&appid=ee59afdc99faf540b4fb977b253afeb9';
         fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -36,12 +44,10 @@ function convertCityLatLong(){
 
 }
 
+// gets event info and calls upon the event image carousel and the bing Map
 function getEventInfo(lat, lon) {
 
-    // gets the user search location from first page and splits it by the "&"
-    
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=2&unit=miles&locale=*&sort=date,name,asc&city="+city+"&countryCode=US&stateCode="+state+"&segmentName=music";
-
   
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -62,6 +68,7 @@ function getEventInfo(lat, lon) {
     });
   };
 
+// displays the upcoming events, dates, and buttons
 function displayUpcomingEvents(data,){
     eventContainerEl.classList.add("sm:flex", "flex-wrap", "md:flex","flex-wrap", "lg:grid", 
     "grid-cols-5", "grid-rows-5", "xl:grid", "grid-cols-5", "grid-rows-5", "2xl:grid", "grid-cols-5", "grid-rows-5");
@@ -72,7 +79,7 @@ function displayUpcomingEvents(data,){
     
     // eventBody for each event
     var eventBody = document.createElement("div");
-    eventBody.classList.add("text-gray-700", "text-center", "bg-gray-400", "px-4", "py-2", "m-2", "sm:max-h-72","md:h-52")
+    eventBody.classList.add("text-gray-700", "text-center", "bg-gray-400", "px-4", "py-2", "m-2", "sm:max-h-72","md:h-80")
     eventCard.append(eventBody);
 
     // creates the event name element
@@ -104,9 +111,12 @@ function displayUpcomingEvents(data,){
       "active:opacity-[0.85]", "active:shadow-none", "disabled:pointer-events-none",
       "disabled:opacity-50", "disabled:shadow-none")
     
+    // creates the event image and formats the size
     var eventImg = document.createElement("img");
     eventImg.src = data.images[4].url
     eventImg.classList.add("object-scale-down", "sm:h-20", "inline")
+    
+    // event ID is assigned to button to go the the next page and render api
     var eventID = data.id;
     var eventLon = data._embedded.venues[0].location.longitude;
     var eventLat = data._embedded.venues[0].location.latitude;
@@ -120,6 +130,7 @@ function displayUpcomingEvents(data,){
     
 }
 
+// button event handler 
 function getMoreEventInfo(){
   
   // gets buttonID which is the event ID and the Lat and long
@@ -134,6 +145,7 @@ function getMoreEventInfo(){
   window.location.assign(searchEvent);
 }
 
+// this s the Carousel image on the top of the page
 function topImg(data){
 
   var carouselImg1 = data.events[0].images[1].url
@@ -149,9 +161,10 @@ function topImg(data){
  
   
   var carouselEL = document.getElementById("carouselEL");
-  carouselEL.append(carouselImg1)
+  carouselEL.append(carouselImg1,carouselImg2,carouselImg3,carouselImg4,carouselImg5)
 }
 
+// renders bing API map to page and creates pushpins for each venue
 function getMap(data, lat, lon){
   
   console.log(lat)
@@ -197,6 +210,7 @@ function getMap(data, lat, lon){
   }
 }
 
+// click handler for pushpins
 function pushpinClicked(e) {
   //Make sure the infobox has metadata to display.
   if (e.target.metadata) {
