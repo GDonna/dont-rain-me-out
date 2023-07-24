@@ -20,19 +20,19 @@ Marko Andreev: Event Card- Page (Weather), Tommorrow API Pulls, Stylizing
 
 ## User Story
 
-As a user, I want to search venues. 
-When I search a venue, it will pull up event details and the weather for that location. 
-Then I will be able to view ticket availibility for that event. 
+As a user, I want to search events based on location. 
+When I search a location, it will pull up event details and the weather for that location. 
+Then I will be able to view ticket availability for that event. 
 
 ## Acceptance Criteria
 ```
-When a user enters a venue,
+When a user enters a location,
 Then it will direct user to a new page.
-Then it will pull up events details for the venue.
-It will only show top 5 events for that venue. 
-When the event details populate for the venue,
-Then it will pull weather details for the venue.
-When a user enters in a bad value for venue,
+Then it will pull up events details for the location.
+It will only show top 5 events for that location. 
+When the event details populate for the location,
+Then it will pull weather details for the location.
+When a user enters in a bad value for location,
 Then it will return to homepage.
 When the user is able to see the event details and the weather forcast for that event,
 Then the user is able to see ticket availbility.
@@ -45,5 +45,5 @@ You can find it here: https://gdonna.github.io/dont-rain-me-out/
 ![Image of Don't Rain on Me! Homepage](./assets/Images/127.0.0.1_5500_index.html%20(2).png)
 
 
-##Credits
+## Credits
 Background Image of Homepage- Donna Goon. 
