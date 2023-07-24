@@ -23,7 +23,7 @@ Marko Andreev: Event Card- Page (Weather), Tommorrow API Pulls, Stylizing
 
 As a user, I want to search events based on location. 
 When I search a location, it will pull up event details and the weather for that location. 
-Then I will be able to view ticket availability for that event. 
+Then I will be able to view ticketmaster's link for that event. 
 
 ## Acceptance Criteria
 ```
@@ -36,9 +36,8 @@ Then it will pull weather details for the location.
 When a user enters in a bad value for location,
 Then it will return to homepage.
 When the user is able to see the event details and the weather forcast for that event,
-Then the user is able to see ticket availbility.
-When the user clicks on the ticket availibility,
-Then it will show a link to ticketmaster's page
+Then the user is able to see the link to Ticketmaster's event page.
+
 ```
 
 ## What the webpage looks like:
