@@ -82,7 +82,7 @@ function displayUpcomingEvents(data,){
     var eventID = data.id;
     var eventLon = data._embedded.venues[0].location.longitude;
     var eventLat = data._embedded.venues[0].location.latitude;
-    eventBtn.setAttribute("id",eventID + "-(" +eventLon +","+ eventLat +")" );
+    eventBtn.setAttribute("id",eventID + "-(" +eventLat +","+ eventLon +")" );
     eventBtn.textContent = "Click for more info";
 
     eventBody.append(eventImg, eventNameEL, newDate, eventDiv, eventBtn);

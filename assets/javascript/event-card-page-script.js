@@ -6,18 +6,18 @@ var temperature = document.getElementById("temperature")
 
 
 function getEventWeather() {
-
     var searchInput = document.location.search.split("&");
     var location = searchInput[0].split('=')
-    
-    var apiUrl = 'https://api.tomorrow.io/v4/weather/forecast?location=' + 'new%20york' + '&apikey=GlInm5aSMTSP0UAHNS9Eu4hbsdpHGcaK'
 
+    var apiUrl = 'https://api.tomorrow.io/v4/weather/forecast?location='+ location +'&timesteps=1d&units=imperial&apikey=TfvvZ1woGp1Ox2lup1yWKpvVjgg6bvxl'
+
+    console.log(apiUrl)
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
+             console.log(data)
               displayLocation(data.location)
               displayTemperature(data.timelines.daily[0].values);
-              console.log(data)
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -28,7 +28,13 @@ function getEventWeather() {
       });
 }
 
+function displayEventInfo(data){
+
+}
+
 function displayLocation(data){
+  console.log(data)
+
   var city = data.name
 
   var locationTag = document.createElement("i")
