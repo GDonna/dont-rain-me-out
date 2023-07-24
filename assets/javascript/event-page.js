@@ -4,12 +4,13 @@ var eventContainerEl = document.getElementById("event-containerEl");
 var eventBtn = document.querySelector("event-Btn");
 var venueSearch = "";
 
+var searchInput = document.location.search.split("&");
+var city = searchInput[0].split("=").pop();
+var state = searchInput[1].split("=").pop();
 function getEventInfo() {
 
     // gets the user search location from first page and splits it by the "&"
-    var searchInput = document.location.search.split("&");
-    var city = searchInput[0].split("=").pop();
-    var state = searchInput[1].split("=").pop();
+    
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=2&unit=miles&locale=*&sort=date,name,asc&city="+city+"&countryCode=US&stateCode="+state+"&segmentName=music";
 
   
@@ -19,11 +20,8 @@ function getEventInfo() {
             console.log(data)
             for(var i = 0; i < data._embedded.events.length; i++){
               displayUpcomingEvents(data._embedded.events[i])
-              topImg(data._embedded.events[i], i+1)
             };
-            for(var i = 0; i < 5; i++){
-              topImg(data._embedded.events[i], i+1)
-            };
+              topImg(data._embedded)
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -101,20 +99,27 @@ function getMoreEventInfo(){
   var location = buttonInfo[1].split(")")[0];
   console.log(location);
 
-  var searchEvent = "./event-card-page.html?location="+ location + "eventID" +eventID
+  var searchEvent = "./event-card-page.html?location="+ location + "eventID" +eventID + "cityname=" + city
   // updates the URL and assigns it to the url to render user to event detail page
   window.location.assign(searchEvent);
 }
 
-function topImg(data, i){
-  var imageID = "venueImage"+i
-  console.log(imageID)
-  var carouselImg = document.getElementsByName("img")
-  console.log(carouselImg)
-  carouselImg.src= data.images[4].url
+function topImg(data){
+
+  var carouselImg1 = data.events[0].images[1].url
+  document.getElementById("venueImage-one").src = carouselImg1
+  var carouselImg2 = data.events[1].images[1].url
+  document.getElementById("venueImage-two").src = carouselImg2
+  var carouselImg3 = data.events[2].images[1].url
+  document.getElementById("venueImage-three").src = carouselImg3
+  var carouselImg4 = data.events[3].images[1].url
+  document.getElementById("venueImage-four").src = carouselImg4
+  var carouselImg5 = data.events[4].images[1].url
+  document.getElementById("venueImage-five").src = carouselImg5
+ 
   
   var carouselEL = document.getElementById("carouselEL");
-  carouselEL.append(carouselImg)
+  carouselEL.append(carouselImg1)
 }
 getEventInfo();
 
