@@ -7,7 +7,36 @@ var venueSearch = "";
 var searchInput = document.location.search.split("&");
 var city = searchInput[0].split("=").pop();
 var state = searchInput[1].split("=").pop();
-function getEventInfo() {
+var map
+var infobox
+convertCityLatLong();
+
+function convertCityLatLong(){
+  var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q='+ city+","+state+ ",USA" +'&limit=1&appid=349ff99c6078919fabcd80ffc046fad1';
+        fetch(apiUrl)
+        .then(function (response) {
+            if (response.ok) {
+            console.log(response);
+            response.json().then(function (data) {
+                lon = data[0].lon;
+                lat = data[0].lat;
+                console.log(lat);
+                console.log(lon);
+                getEventInfo(lon, lat);
+
+            });
+            } else {
+            alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect OpenWeather.com connection');
+        });
+  
+
+}
+
+function getEventInfo(lat, lon) {
 
     // gets the user search location from first page and splits it by the "&"
     
@@ -22,6 +51,7 @@ function getEventInfo() {
               displayUpcomingEvents(data._embedded.events[i])
             };
               topImg(data._embedded)
+              getMap(data, lat, lon)
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -121,5 +151,61 @@ function topImg(data){
   var carouselEL = document.getElementById("carouselEL");
   carouselEL.append(carouselImg1)
 }
-getEventInfo();
 
+function getMap(data, lat, lon){
+  
+  console.log(lat)
+  console.log(lon)
+  map = new Microsoft.Maps.Map('#venueMaps', {
+    credentials: "At4pyP_VIdBay1sVdvmdDakiHMRlD3Iei3gdJVapdNdZ6ONpkEbughZCHSVjc83L",
+    center: new Microsoft.Maps.Location(lon,lat),
+    mapTypeId: Microsoft.Maps.MapTypeId.road,
+    zoom: 10
+  });
+
+  //Create an infobox at the center of the map but don't show it.
+  infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+    visible: false
+  });
+
+  //Assign the infobox to a map instance.
+  infobox.setMap(map);
+  
+  for (var i = 0; i < data._embedded.events.length; i++) {
+
+    var eventLocationData = data._embedded.events[i]._embedded.venues
+    var eventVenue = eventLocationData[0].name
+    console.log(eventVenue)
+    
+    var eventLat = eventLocationData[0].location.latitude
+    var eventLon = eventLocationData[0].location.longitude
+    var eventlatlon = new Microsoft.Maps.Location(eventLat,eventLon)
+    var eventAddress = eventLocationData[0].address.line1
+
+    var pin = new Microsoft.Maps.Pushpin(eventlatlon);
+    //Store some metadata with the pushpin.
+    pin.metadata = {
+        title: eventVenue,
+        description: eventAddress
+    };
+
+    //Add a click event handler to the pushpin.
+    Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
+
+    //Add pushpin to the map.
+    map.entities.push(pin);
+  }
+}
+
+function pushpinClicked(e) {
+  //Make sure the infobox has metadata to display.
+  if (e.target.metadata) {
+      //Set the infobox options with the metadata of the pushpin.
+      infobox.setOptions({
+          location: e.target.getLocation(),
+          title: e.target.metadata.title,
+          description: e.target.metadata.description,
+          visible: true
+      });
+  }
+}
