@@ -7,6 +7,7 @@ var venueSearch = "";
 var searchInput = document.location.search.split("&");
 var city = searchInput[0].split("=").pop();
 var state = searchInput[1].split("=").pop();
+
 function getEventInfo() {
 
     // gets the user search location from first page and splits it by the "&"
@@ -99,7 +100,7 @@ function getMoreEventInfo(){
   var location = buttonInfo[1].split(")")[0];
   console.log(location);
 
-  var searchEvent = "./event-card-page.html?location="+ location + "eventID" +eventID + "cityname=" + city
+  var searchEvent = "./event-card-page.html?location="+ location + "eventID" + eventID + "cityname=" + city + "stateName=" + state
   // updates the URL and assigns it to the url to render user to event detail page
   window.location.assign(searchEvent);
 }

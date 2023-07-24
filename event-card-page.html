@@ -24,14 +24,14 @@
   <body class="min-100-vh">
 
     <nav>
-      <p class="text-current"></p>
+      <p id= "eventName" class="text-current">''</p>
     
 
       <ul>
         <li><a href="#"><i class="fa-solid fa-bars fa-2xl"></i></a>
           <ul>
             <li><a href="index.html">Homepage</a></li>
-            <li><a href="eventpage.html">Event Search</a></li>
+            <li><a id="eventPage" href="">Event Search</a></li>
           </ul>
         </li>
       </ul>
@@ -40,16 +40,19 @@
     <div class="w-full flex flex-wrap justify-between">
       <article id="ticketmaster-box" class="w-1/2 px-5 py-5 flex justify-between">
         <span id="ticketInfo" class="border-solid border-black border-4 px-5 py-3 rounded-lg">
-
-          
+          <div id="eventImg"></div>
+          <div id="eventInfo" class="text-2xl justify-center font-bold flex-wrap py-10"></div>
+          <div id="startDate" class="text-2xl justify-center font-bold flex-wrap py-10"></div>
+          <div id="endDate"></div>
+          <div id="tickets" class="flex flex-wrap justify-center font-bold text-2xl"><button class="border-none"><a id="ticketLink" href="">More Info Here</a></button></div>
         </span>
       </article>
 
 
       <article id="weather-box" class="w-1/2 px-5 py-5 flex justify-between">
-        <span id="weather" class="border-black border-4 px-5 rounded-lg">
+        <span id="weather" class="border-black border-4 px-5 rounded-lg place-content-center">
           <div id="weatherLocation" class="flex justify-center py-6 text-3xl text-center px-5"></div>
-          <div id="weather-img" class="flex justify-center py-10 px-5"><i class="fa-solid fa-cloud-rain text-9xl"></i></div>
+          <div id="weather-img" class="flex justify-center py-10 px-5"></div>
           <div class="text-center font-bold text-6xl flex justify-center px-5" id="temperature"></div>
         </span>
       </article>
