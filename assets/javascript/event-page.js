@@ -13,6 +13,9 @@ var state = searchInput[1].split("=").pop();
 var map
 var infobox
 
+// updates Title page text depending on the city and state
+eventPageTitle.innerHTML = "Showing Events for " + city + "," + state
+
 convertCityLatLong();
 
 // gets the City Lat and Long to render Bing MAP API
@@ -158,7 +161,7 @@ function topImg(data){
  
   
   var carouselEL = document.getElementById("carouselEL");
-  carouselEL.append(carouselImg1)
+  carouselEL.append(carouselImg1,carouselImg2,carouselImg3,carouselImg4,carouselImg5)
 }
 
 // renders bing API map to page and creates pushpins for each venue
