@@ -7,13 +7,14 @@ The whole premise for our project is to make it easier for users to be able to s
 
 ## Developer Notes
 
-This is a webpage in collaboration with Stephen Hogue, Marko Andreev, and Donna Goon. Technologies used in this project includes Tailwind CSS, CSS, Javascript/JQuery, HTML, Ticketmaster API, Tomorrow (Forecast) API, and VS Code. 
+This is a webpage in collaboration with Stephen Hogue, Marko Andreev, and Donna Goon. Technologies used in this project includes Tailwind CSS, CSS, Javascript/JQuery, HTML, Ticketmaster API, Tomorrow (Forecast) API, Bing Maps API and VS Code. 
 
 Roles were broken down as follows:
 
 ```
+
 Donna Goon: Homepage creation, Stylizing, README, Modal Creation(in lieu of alerts/prompts)
-Stephen Hogue: Event Card- Main Page creation, Ticketmaster API Pulls, Stylizing 
+Stephen Hogue: Event Card- Main Page creation, Bing Map API, Ticketmaster API Pulls, Stylizing 
 Marko Andreev: Event Card- Page (Weather), Tommorrow API Pulls, Stylizing
 
 ```
