@@ -2,52 +2,27 @@ html{
     scroll-behavior: smooth;
 }
 
-#hero{
-    position:absolute;
-    opacity: 0.5;
-    
-}
-header{
-    width:auto;
-    width: 70%
-}
-h1 {
-    font-size: 40px;
-    margin-top: 15px;
-    
-}
-p{
-    font-size: 50px;
-    font-weight: 900; 
-    text-transform: uppercase;
-    margin-bottom:  25px;;
-    
+
+.form-input{
+    margin-right: 20px;
 }
 
-#click-button{
-    background:-moz-linear-gradient(transparent);
-    font-size: 40px;
-    padding: 10px, 50px;
-    width: 35%;
-    border-style: double;
-    border-width: thick;
-    border-radius: 20px;
-    margin-right: 5%;
-    margin-left: 40px;
-    
-}
 body{
-    background-color: #93e1D8; 
-    font-family:  Garamond, Helvetica, sans-serif; 
+    background-color: #FFA69E; 
+    font-family: Georgia, Helvetica, sans-serif; 
     
 }
 
 #top{
-    margin-top: 15%;;
+    
     padding: 25px;
+    background-color: #aa4465;
     display: inline-flex; 
     position: relative; 
-    border-style: double;
-    border-width: thick;
-
+    border-radius: 50px;
+    
 }
+
+
+
+
