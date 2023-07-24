@@ -13,3 +13,10 @@ h3{
 .eventCard{
     background-color: #462255;
 }
+
+#venueMaps{
+    position:relative;
+    width:600px;
+    height:400px;
+    margin: auto
+}

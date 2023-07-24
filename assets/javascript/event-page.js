@@ -4,16 +4,50 @@ var eventContainerEl = document.getElementById("event-containerEl");
 var eventBtn = document.querySelector("event-Btn");
 var venueSearch = "";
 
+// gets the user search location from first page and splits it by the "&"
 var searchInput = document.location.search.split("&");
 var city = searchInput[0].split("=").pop();
 var state = searchInput[1].split("=").pop();
 
-function getEventInfo() {
+// variables for the Bing MAP api and Map event handler
+var map
+var infobox
 
-    // gets the user search location from first page and splits it by the "&"
-    
+// updates Title page text depending on the city and state
+eventPageTitle.innerHTML = "Showing Events for " + city + "," + state
+
+convertCityLatLong();
+
+// gets the City Lat and Long to render Bing MAP API
+function convertCityLatLong(){
+  var apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q='+ city+","+state+ ",USA" +'&limit=1&appid=ee59afdc99faf540b4fb977b253afeb9';
+        fetch(apiUrl)
+        .then(function (response) {
+            if (response.ok) {
+            console.log(response);
+            response.json().then(function (data) {
+                lon = data[0].lon;
+                lat = data[0].lat;
+                console.log(lat);
+                console.log(lon);
+                getEventInfo(lon, lat);
+
+            });
+            } else {
+            alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect OpenWeather.com connection');
+        });
+  
+
+}
+
+// gets event info and calls upon the event image carousel and the bing Map
+function getEventInfo(lat, lon) {
+
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=2&unit=miles&locale=*&sort=date,name,asc&city="+city+"&countryCode=US&stateCode="+state+"&segmentName=music";
-
   
     fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -23,6 +57,7 @@ function getEventInfo() {
               displayUpcomingEvents(data._embedded.events[i])
             };
               topImg(data._embedded)
+              getMap(data, lat, lon)
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -33,6 +68,7 @@ function getEventInfo() {
     });
   };
 
+// displays the upcoming events, dates, and buttons
 function displayUpcomingEvents(data,){
     eventContainerEl.classList.add("sm:flex", "flex-wrap", "md:flex","flex-wrap", "lg:grid", 
     "grid-cols-5", "grid-rows-5", "xl:grid", "grid-cols-5", "grid-rows-5", "2xl:grid", "grid-cols-5", "grid-rows-5");
@@ -43,7 +79,7 @@ function displayUpcomingEvents(data,){
     
     // eventBody for each event
     var eventBody = document.createElement("div");
-    eventBody.classList.add("text-gray-700", "text-center", "bg-gray-400", "px-4", "py-2", "m-2", "sm:max-h-72","md:h-52")
+    eventBody.classList.add("text-gray-700", "text-center", "bg-gray-400", "px-4", "py-2", "m-2", "sm:max-h-72","md:h-80")
     eventCard.append(eventBody);
 
     // creates the event name element
@@ -75,9 +111,12 @@ function displayUpcomingEvents(data,){
       "active:opacity-[0.85]", "active:shadow-none", "disabled:pointer-events-none",
       "disabled:opacity-50", "disabled:shadow-none")
     
+    // creates the event image and formats the size
     var eventImg = document.createElement("img");
     eventImg.src = data.images[4].url
     eventImg.classList.add("object-scale-down", "sm:h-20", "inline")
+    
+    // event ID is assigned to button to go the the next page and render api
     var eventID = data.id;
     var eventLon = data._embedded.venues[0].location.longitude;
     var eventLat = data._embedded.venues[0].location.latitude;
@@ -91,6 +130,7 @@ function displayUpcomingEvents(data,){
     
 }
 
+// button event handler 
 function getMoreEventInfo(){
   
   // gets buttonID which is the event ID and the Lat and long
@@ -105,6 +145,7 @@ function getMoreEventInfo(){
   window.location.assign(searchEvent);
 }
 
+// this s the Carousel image on the top of the page
 function topImg(data){
 
   var carouselImg1 = data.events[0].images[1].url
@@ -120,7 +161,65 @@ function topImg(data){
  
   
   var carouselEL = document.getElementById("carouselEL");
-  carouselEL.append(carouselImg1)
+  carouselEL.append(carouselImg1,carouselImg2,carouselImg3,carouselImg4,carouselImg5)
 }
-getEventInfo();
 
+// renders bing API map to page and creates pushpins for each venue
+function getMap(data, lat, lon){
+  
+  console.log(lat)
+  console.log(lon)
+  map = new Microsoft.Maps.Map('#venueMaps', {
+    credentials: "At4pyP_VIdBay1sVdvmdDakiHMRlD3Iei3gdJVapdNdZ6ONpkEbughZCHSVjc83L",
+    center: new Microsoft.Maps.Location(lon,lat),
+    mapTypeId: Microsoft.Maps.MapTypeId.road,
+    zoom: 10
+  });
+
+  //Create an infobox at the center of the map but don't show it.
+  infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+    visible: false
+  });
+
+  //Assign the infobox to a map instance.
+  infobox.setMap(map);
+  
+  for (var i = 0; i < data._embedded.events.length; i++) {
+
+    var eventLocationData = data._embedded.events[i]._embedded.venues
+    var eventVenue = eventLocationData[0].name
+    console.log(eventVenue)
+    
+    var eventLat = eventLocationData[0].location.latitude
+    var eventLon = eventLocationData[0].location.longitude
+    var eventlatlon = new Microsoft.Maps.Location(eventLat,eventLon)
+    var eventAddress = eventLocationData[0].address.line1
+
+    var pin = new Microsoft.Maps.Pushpin(eventlatlon);
+    //Store some metadata with the pushpin.
+    pin.metadata = {
+        title: eventVenue,
+        description: eventAddress
+    };
+
+    //Add a click event handler to the pushpin.
+    Microsoft.Maps.Events.addHandler(pin, 'click', pushpinClicked);
+
+    //Add pushpin to the map.
+    map.entities.push(pin);
+  }
+}
+
+// click handler for pushpins
+function pushpinClicked(e) {
+  //Make sure the infobox has metadata to display.
+  if (e.target.metadata) {
+      //Set the infobox options with the metadata of the pushpin.
+      infobox.setOptions({
+          location: e.target.getLocation(),
+          title: e.target.metadata.title,
+          description: e.target.metadata.description,
+          visible: true
+      });
+  }
+}
