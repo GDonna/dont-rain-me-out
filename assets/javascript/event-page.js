@@ -120,7 +120,7 @@ function displayUpcomingEvents(data,){
     var eventID = data.id;
     var eventLon = data._embedded.venues[0].location.longitude;
     var eventLat = data._embedded.venues[0].location.latitude;
-    eventBtn.setAttribute("id",eventID + "-(" +eventLon +","+ eventLat +")" );
+    eventBtn.setAttribute("id",eventID + "-(" +eventLat +","+ eventLon +")" );
     eventBtn.textContent = "Click for more info";
 
     eventBody.append(eventImg, eventNameEL, newDate, eventDiv, eventBtn);
@@ -140,7 +140,7 @@ function getMoreEventInfo(){
   var location = buttonInfo[1].split(")")[0];
   console.log(location);
 
-  var searchEvent = "./event-card-page.html?location="+ location + "eventID" +eventID + "cityname=" + city
+  var searchEvent = "./event-card-page.html?location="+ location + "eventID" + eventID + "cityname=" + city + "stateName=" + state
   // updates the URL and assigns it to the url to render user to event detail page
   window.location.assign(searchEvent);
 }
