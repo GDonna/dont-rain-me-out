@@ -24,7 +24,7 @@ function error2() {
 
 }
 
-
+//Function to toggle the search event
 function searchCityStateSubmit(event) {
   event.preventDefault();
 
@@ -35,6 +35,7 @@ function searchCityStateSubmit(event) {
     error()
     return;
   }
+  //Function to check the user value input with the Ticketmaster API
   function checkLocation() {
     var apiUrl = "https://app.ticketmaster.com/discovery/v2/events?apikey=9m1sGkEcZegpwhG1afNONOAPhT8SAZVM&radius=10&unit=miles&locale=*&sort=date,asc&city=" + cityFormEl + "&countryCode=US&stateCode=" + stateFormEl;
 
@@ -62,6 +63,8 @@ function searchCityStateSubmit(event) {
   }
   checkLocation()
 }
+
+//Page is listening for the user to launch triggers
 searchEventEl.addEventListener("submit", searchCityStateSubmit)
 errorEl.addEventListener("click", error)
 errorEl2.addEventListener("click", error2)
